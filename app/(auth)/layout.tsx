@@ -7,6 +7,10 @@ type AuthRootLayout = {
   children: ReactElement;
 };
 
+// const inter = Inter({
+//     variable: "--font-inter",
+//   });
+
 export default function AuthRootLayout({ children }: AuthRootLayout) {
   return (
     <html lang="en">
