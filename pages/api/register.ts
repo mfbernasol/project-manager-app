@@ -17,19 +17,20 @@ export default async function register (req: NextApiRequest,res: NextApiResponse
             }
         })
 
-        const jwt = await createJWT(user)
-
+        const jwt = await createJWT(user);
         res.setHeader(
-            'Set-Cookie',
-            serialize(process.env.COOKIE_NAME as string, jwt, {
-                httpOnly: true, 
-                path: "/",
-                maxAge: 60 * 60 * 24 * 7
-            })
-        )
-
-        res.status(201)
-        res.end()
-    }
+          "Set-Cookie",
+          serialize(process.env.COOKIE_NAME as string, jwt, {
+            httpOnly: true,
+            path: "/",
+            maxAge: 60 * 60 * 24 * 7,
+          })
+        );
+        res.status(201);
+        res.json({});
+      } else {
+        res.status(402);
+        res.json({});
+      }
 
 }
