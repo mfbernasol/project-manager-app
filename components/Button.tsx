@@ -39,22 +39,21 @@ const buttonClasses = cva(
       },
     },
     defaultVariants: {
-        intent: 'primary',
-        size: 'medium'
-    }
+      intent: "primary",
+      size: "medium",
+    },
   }
 );
 
-export interface ButtonProps
-  extends React.HTMLAttributes<HTMLButtonElement>,
+export interface ButtonProps extends React.ComponentPropsWithoutRef<"button">,
     VariantProps<typeof buttonClasses> {}
 
-
-
-
-
-const Button: FC<ButtonProps> = ({children, intent, size, className}) => {
-  return <button className={buttonClasses({intent, size, className})}>{children}</button>;
-};
+    const Button: FC<ButtonProps> = ({children, className, intent, size, ...props}) => {
+      return (
+          <button className={buttonClasses({intent, size, className})} {...props}>
+              {children}
+          </button>
+      )
+  }
 
 export default Button;
